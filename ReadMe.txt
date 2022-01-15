@@ -1,0 +1,4 @@
+We have developed 2 streaming queries and 6 queries with the tweets dump.
+The Spark-Streaming-Twitter contains the code related to the Streaming Queries and execute the TwitterSentimentMain.scala file in the src folder to collect the tweets and upload it to mongolab
+The Spark-Tweet-Queries contains the code related to the remaining Queries and  execute the  TwitterSentimentMain.scala file in the src folder to read the tweets from the disk and perform the queries
+The Webvisual folder contains the visualizations that we have implemented. data.tsv file is required to get the chart visualizations which is generated when the TwitterSentimentMain.scala is executed 
