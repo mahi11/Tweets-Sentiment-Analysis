@@ -21,10 +21,10 @@ object TwitterSentimentMain {
     // Set the system properties so that Twitter4j library used by twitter stream
     // can use them to generate OAuth credentials
 
-    System.setProperty("twitter4j.oauth.consumerKey", "XmuCJg6wqok0kM4atoBWyzX70")
-    System.setProperty("twitter4j.oauth.consumerSecret", "M791X1Py0jy52DG2f18EsxS0CYaMJhOfEZykO8H3mOLmfMXOBD")
-    System.setProperty("twitter4j.oauth.accessToken", "66398818-wqoEXxQRTtb5GS24eqvn4DS5yQHIfay0NkgN3YDed")
-    System.setProperty("twitter4j.oauth.accessTokenSecret", "xP3IHuIaGJAuDES88Mt6TuxVEz3oSDz5AlYOgtZ7MEZD1")
+    System.setProperty("twitter4j.oauth.consumerKey", "${twitter_consumer_key}")
+    System.setProperty("twitter4j.oauth.consumerSecret", "${twitter_consumer_secret}")
+    System.setProperty("twitter4j.oauth.accessToken", "${twitter_access_token}")
+    System.setProperty("twitter4j.oauth.accessTokenSecret", "${twitter_access_token_secret}")
 
     //Create a spark configuration with a custom name and master
     // For more master configuration see  https://spark.apache.org/docs/1.2.0/submitting-applications.html#master-urls

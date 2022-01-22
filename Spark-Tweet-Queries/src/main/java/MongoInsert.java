@@ -14,7 +14,7 @@ public class MongoInsert {
     public static void createDBCollection() {
 
         if(mongoClient == null){
-            MongoClientURI mongoClientUri = new MongoClientURI("mongodb://admin:abc123@ds059654.mongolab.com:59654/twitterspark");
+            MongoClientURI mongoClientUri = new MongoClientURI("${mongo_uri}");
             mongoClient = new MongoClient(mongoClientUri);
             DB db = mongoClient.getDB(mongoClientUri.getDatabase());
             dbcollection = db.getCollection("nfltweet");

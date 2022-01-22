@@ -16,14 +16,14 @@ object TwitterSentimentMain {
 
     val sc = new SparkContext(sparkConf)
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
-    val path = "F:/big/tweets4.json"
+    val path = "${path_to_saved_tweets}"
     val abc = sqlContext.read.json(path)
 
     abc.printSchema()
     abc.registerTempTable("def")
     val lang = sqlContext.sql("SELECT lang,count(*) AS cnt FROM def WHERE lang <> 'null' GROUP BY lang ORDER BY cnt DESC LIMIT 10")
     val c=lang.collect()
-    val pr = new PrintWriter("F:/data.tsv")
+    val pr = new PrintWriter("${path_to_print}")
       pr.println("letter  frequency")
     for (i<-0 to c.length-1)
     {
@@ -43,7 +43,7 @@ object TwitterSentimentMain {
     rc.close()
 
     val fcount = sqlContext.sql("SELECT retweeted_status.text,retweeted_status.favorite_count  FROM def ORDER BY retweeted_status.favorite_count DESC LIMIT 10")
-    val fc = new PrintWriter("F:/topfavtweet.txt")
+    val fc = new PrintWriter("${path_to_print}")
     val f=fcount.collect()
     for (i<-0 to f.length-1)
     {
@@ -51,14 +51,14 @@ object TwitterSentimentMain {
     }
 
     val frcount = sqlContext.sql("SELECT user.name,user.friends_count  FROM def ORDER BY user.friends_count DESC LIMIT 10")
-    val frc = new PrintWriter("F:/topfreinds.txt")
+    val frc = new PrintWriter("${path_to_print}")
     val fr=frcount.collect()
     for (i<-0 to fr.length-1)
     {
       frc.println(fr{i})
     }
     val focount = sqlContext.sql("SELECT user.name,user.followers_count  FROM def ORDER BY user.followers_count DESC LIMIT 1")
-    val foc = new PrintWriter("F:/topfollowers.txt")
+    val foc = new PrintWriter("${path_to_print}")
     val fo=focount.collect()
     for (i<-0 to fo.length-1)
     {
